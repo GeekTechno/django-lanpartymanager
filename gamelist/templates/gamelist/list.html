@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>Kjapp oversikt over det som spilles på AbaLAN og hvordan du kan henge deg på!</p>
+
+<p><a href="{% url 'game:create_game' %}">Nytt spill</a></p>
+
+<dl>
+{% for game in game_list %}
+    <dt>{{ game.name }} <a href="{% url 'game:create_connection' game.id %}"><em>Ny tilkobling</em></a></dt>
+
+    {% for connection in game.connection_set.all %}
+    <dd>{{ connection.details }}</dd>
+    {% empty %}
+    <dd><em>Det er ingen tilkoblingsinformasjon til spillet!</em></dd>
+    {% endfor %}
+{% empty %}
+    <dt><em>Ingen spill å vise!</em></dt>
+{% endfor %}
+</dl>
+{% endblock %}
