@@ -112,6 +112,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'south',
     'gamelist',
+    'games',
 )
 
 # A sample logging configuration. The only tangible logging
